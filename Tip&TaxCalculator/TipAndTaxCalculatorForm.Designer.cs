@@ -54,6 +54,7 @@
             CalculateButton.TabIndex = 0;
             CalculateButton.Text = "&Calculate";
             CalculateButton.UseVisualStyleBackColor = true;
+            CalculateButton.Click += CalculateButton_Click;
             // 
             // ClearButton
             // 
@@ -63,6 +64,7 @@
             ClearButton.TabIndex = 1;
             ClearButton.Text = "C&lear";
             ClearButton.UseVisualStyleBackColor = true;
+            ClearButton.Click += ClearButton_Click;
             // 
             // ExitButton
             // 
@@ -72,6 +74,7 @@
             ExitButton.TabIndex = 2;
             ExitButton.Text = "E&xit";
             ExitButton.UseVisualStyleBackColor = true;
+            ExitButton.Click += ExitButton_Click;
             // 
             // DollarAmountTextBox
             // 
@@ -219,7 +222,9 @@
             Controls.Add(ExitButton);
             Controls.Add(ClearButton);
             Controls.Add(CalculateButton);
+            MaximizeBox = false;
             Name = "TipAndTaxCalculatorForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();
