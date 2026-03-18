@@ -33,7 +33,7 @@
             ExitButton = new Button();
             DollarAmountTextBox = new TextBox();
             AmountLabel = new Label();
-            label2 = new Label();
+            DisplayLabel = new Label();
             Tip15RadioButton = new RadioButton();
             Tip18RadioButton = new RadioButton();
             Tip20RadioButton = new RadioButton();
@@ -92,14 +92,14 @@
             AmountLabel.TabIndex = 4;
             AmountLabel.Text = "Dollar Amount";
             // 
-            // label2
+            // DisplayLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(424, 33);
-            label2.Name = "label2";
-            label2.Size = new Size(59, 25);
-            label2.TabIndex = 5;
-            label2.Text = "label2";
+            DisplayLabel.AutoSize = true;
+            DisplayLabel.Location = new Point(424, 33);
+            DisplayLabel.Name = "DisplayLabel";
+            DisplayLabel.Size = new Size(59, 25);
+            DisplayLabel.TabIndex = 5;
+            DisplayLabel.Text = "label2";
             // 
             // Tip15RadioButton
             // 
@@ -216,7 +216,7 @@
             Controls.Add(Tip20RadioButton);
             Controls.Add(Tip18RadioButton);
             Controls.Add(Tip15RadioButton);
-            Controls.Add(label2);
+            Controls.Add(DisplayLabel);
             Controls.Add(AmountLabel);
             Controls.Add(DollarAmountTextBox);
             Controls.Add(ExitButton);
@@ -237,7 +237,7 @@
         private Button ExitButton;
         private TextBox DollarAmountTextBox;
         private Label AmountLabel;
-        private Label label2;
+        private Label DisplayLabel;
         private RadioButton Tip15RadioButton;
         private RadioButton Tip18RadioButton;
         private RadioButton Tip20RadioButton;
