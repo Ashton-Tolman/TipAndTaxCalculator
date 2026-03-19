@@ -47,19 +47,45 @@ namespace Tip_TaxCalculator
                 decimal.Parse(TipCustomTextBox.Text);
                 TipCustomTextBox.BackColor = Color.White;
             }
-            catch
+            catch (Exception)
             {
                 TipCustomTextBox.BackColor = Color.LightYellow;
                 _valid = false;
             }
             return _valid;
         }
+
+        /// <summary>
+        /// Calculates discounts
+        /// </summary>
+        /// <param name="thisAmount">Discount calculated with this param</param>
+        /// <returns></returns>
+        decimal CacluateAAADiscountOn(decimal thisAmount)
+        {
+            return thisAmount * 0.03m;
+        }
+
+        decimal CalculateDinersCardDiscountOn(decimal thisAmount)
+        {
+            return thisAmount * 0.05m;
+        }
+
+        /// <summary>
+        /// Does tax stuff
+        /// </summary>
+        /// <param name="thisAmount">pass in a number you want idaho tax on</param>
+        /// <returns></returns>
+        decimal CalculateTaxOn(decimal thisAmount)
+        {
+
+            return thisAmount * 0.06m;
+        }
         /// <summary>
         /// Calculate tip amount based on specified subtotal and selected tip percent 
         /// </summary>
         /// <param name="thisAmount">The subtotal amount that is used to calculated percent</param>
         /// <returns>only the tip percent not including the passed in amount</returns>
-        decimal CalculateTipOn(decimal thisAmount)
+        decimal CalculateTipOn(decimal thisAmount , decimal customTip = 0)
         {
             decimal subTotal = 0.00m;
 
@@ -75,7 +101,7 @@ namespace Tip_TaxCalculator
                     subTotal = thisAmount * 0.20m;
                     break;
                 case bool when TipCustomRadioButton.Checked:
-                    subTotal = thisAmount * 0.15m;
+                    subTotal = customTip;
                     break;
                 default:
                     MessageBox.Show("YOU FOOL. WHAT HAVE YOU DONE?! YOU'VE DESTROYED US ALL!!!");
@@ -93,7 +119,10 @@ namespace Tip_TaxCalculator
 
         private void CalculateButton_Click(object sender, EventArgs e)
         {
+            if (AllFieldsValid())
+            {
 
+            }
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
