@@ -82,6 +82,7 @@
             DollarAmountTextBox.Name = "DollarAmountTextBox";
             DollarAmountTextBox.Size = new Size(142, 31);
             DollarAmountTextBox.TabIndex = 3;
+            DollarAmountTextBox.TextChanged += DollarAmountTextBox_TextChanged;
             // 
             // AmountLabel
             // 
@@ -153,6 +154,7 @@
             TipCustomRadioButton.TabStop = true;
             TipCustomRadioButton.Text = "Custom";
             TipCustomRadioButton.UseVisualStyleBackColor = true;
+            TipCustomRadioButton.CheckedChanged += TipCustomRadioButton_CheckedChanged;
             // 
             // DiscountAAACheckBox
             // 
@@ -200,6 +202,7 @@
             TipCustomTextBox.Size = new Size(74, 31);
             TipCustomTextBox.TabIndex = 15;
             TipCustomTextBox.TabStop = false;
+            TipCustomTextBox.TextChanged += TipCustomTextBox_TextChanged;
             // 
             // TipAndTaxCalculatorForm
             // 

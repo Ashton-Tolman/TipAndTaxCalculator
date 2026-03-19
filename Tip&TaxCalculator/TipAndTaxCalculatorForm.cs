@@ -16,14 +16,16 @@ namespace Tip_TaxCalculator
             DollarAmountTextBox.Text = "";
             Tip15RadioButton.Checked = true;
             TipCustomTextBox.Text = "";
+            TipCustomTextBox.Enabled = false;
             TipCustomRadioButton.Checked = false;
             DiscountAAACheckBox.Checked = false;
             DiscountDCCheckBox.Checked = false;
             DisplayLabel.Text = "";
+            AllFieldsValid();
             DollarAmountTextBox.Select();
         }
 
-        bool AllValidateFields()
+        bool AllFieldsValid()
         {
             bool _valid = true;
             try
@@ -43,8 +45,8 @@ namespace Tip_TaxCalculator
             }
             catch
             {
-                TipCustomTextBox.BackColor= Color.LightYellow;
-                _valid= false;
+                TipCustomTextBox.BackColor = Color.LightYellow;
+                _valid = false;
             }
             return _valid;
         }
@@ -92,7 +94,30 @@ namespace Tip_TaxCalculator
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            SetDefaults();
+        }
 
+        private void DollarAmountTextBox_TextChanged(object sender, EventArgs e)
+        {
+            AllFieldsValid();
+        }
+
+        private void TipCustomRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TipCustomRadioButton.Checked)
+            {
+                TipCustomTextBox.Enabled = true;
+            }
+            else
+            {
+                TipCustomTextBox.Enabled = false;
+                TipCustomTextBox.Text = "";
+            }
+        }
+
+        private void TipCustomTextBox_TextChanged(object sender, EventArgs e)
+        {
+            AllFieldsValid();
         }
     }
 }
