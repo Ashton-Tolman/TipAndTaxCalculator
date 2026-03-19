@@ -28,6 +28,8 @@ namespace Tip_TaxCalculator
         bool AllFieldsValid()
         {
             bool _valid = true;
+            
+            //Validate dollar amount 
             try
             {
                 decimal.Parse(DollarAmountTextBox.Text);
@@ -38,6 +40,8 @@ namespace Tip_TaxCalculator
                 DollarAmountTextBox.BackColor = Color.LightYellow;
                 _valid = false;
             }
+
+            //Validate custom tip amount 
             try
             {
                 decimal.Parse(TipCustomTextBox.Text);
