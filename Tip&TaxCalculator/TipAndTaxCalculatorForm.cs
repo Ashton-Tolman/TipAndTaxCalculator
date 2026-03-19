@@ -22,6 +22,32 @@ namespace Tip_TaxCalculator
             DisplayLabel.Text = "";
             DollarAmountTextBox.Select();
         }
+
+        bool AllValidateFields()
+        {
+            bool _valid = true;
+            try
+            {
+                decimal.Parse(DollarAmountTextBox.Text);
+                DollarAmountTextBox.BackColor = Color.White;
+            }
+            catch (Exception)
+            {
+                DollarAmountTextBox.BackColor = Color.LightYellow;
+                _valid = false;
+            }
+            try
+            {
+                decimal.Parse(TipCustomTextBox.Text);
+                TipCustomTextBox.BackColor = Color.White;
+            }
+            catch
+            {
+                TipCustomTextBox.BackColor= Color.LightYellow;
+                _valid= false;
+            }
+            return _valid;
+        }
         /// <summary>
         /// Calculate tip amount based on specified subtotal and selected tip percent 
         /// </summary>
@@ -50,7 +76,7 @@ namespace Tip_TaxCalculator
                     break;
             }
 
-            return 0.00m;
+            return subTotal;
         }
 
         //EventHandlers below--------------------------------------------------
