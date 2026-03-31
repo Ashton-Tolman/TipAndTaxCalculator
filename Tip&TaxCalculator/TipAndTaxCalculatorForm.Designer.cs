@@ -96,9 +96,10 @@
             // DisplayLabel
             // 
             DisplayLabel.AutoSize = true;
+            DisplayLabel.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DisplayLabel.Location = new Point(424, 33);
             DisplayLabel.Name = "DisplayLabel";
-            DisplayLabel.Size = new Size(59, 25);
+            DisplayLabel.Size = new Size(70, 22);
             DisplayLabel.TabIndex = 5;
             DisplayLabel.Text = "label2";
             // 
