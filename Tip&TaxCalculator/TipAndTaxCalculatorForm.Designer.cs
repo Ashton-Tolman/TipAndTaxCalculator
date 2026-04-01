@@ -44,6 +44,7 @@
             DiscountLabel = new Label();
             toolStrip1 = new ToolStrip();
             TipCustomTextBox = new TextBox();
+            TipCustomBoxLabel = new Label();
             SuspendLayout();
             // 
             // CalculateButton
@@ -95,11 +96,10 @@
             // 
             // DisplayLabel
             // 
-            DisplayLabel.AutoSize = true;
-            DisplayLabel.Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            DisplayLabel.Font = new Font("Source Code Pro", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             DisplayLabel.Location = new Point(424, 33);
             DisplayLabel.Name = "DisplayLabel";
-            DisplayLabel.Size = new Size(70, 22);
+            DisplayLabel.Size = new Size(364, 318);
             DisplayLabel.TabIndex = 5;
             DisplayLabel.Text = "label2";
             // 
@@ -198,18 +198,28 @@
             // 
             // TipCustomTextBox
             // 
-            TipCustomTextBox.Location = new Point(253, 170);
+            TipCustomTextBox.Location = new Point(272, 170);
             TipCustomTextBox.Name = "TipCustomTextBox";
             TipCustomTextBox.Size = new Size(74, 31);
             TipCustomTextBox.TabIndex = 15;
             TipCustomTextBox.TabStop = false;
             TipCustomTextBox.TextChanged += TipCustomTextBox_TextChanged;
             // 
+            // TipCustomBoxLabel
+            // 
+            TipCustomBoxLabel.AutoSize = true;
+            TipCustomBoxLabel.Location = new Point(253, 172);
+            TipCustomBoxLabel.Name = "TipCustomBoxLabel";
+            TipCustomBoxLabel.Size = new Size(22, 25);
+            TipCustomBoxLabel.TabIndex = 16;
+            TipCustomBoxLabel.Text = "$";
+            // 
             // TipAndTaxCalculatorForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(TipCustomBoxLabel);
             Controls.Add(TipCustomTextBox);
             Controls.Add(toolStrip1);
             Controls.Add(DiscountLabel);
@@ -252,5 +262,6 @@
         private Label DiscountLabel;
         private ToolStrip toolStrip1;
         private TextBox TipCustomTextBox;
+        private Label TipCustomBoxLabel;
     }
 }

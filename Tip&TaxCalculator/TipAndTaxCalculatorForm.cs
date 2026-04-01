@@ -62,12 +62,24 @@ namespace Tip_TaxCalculator
         /// <returns></returns>
         decimal CalculateAAADiscountOn(decimal thisAmount)
         {
-            return thisAmount * 0.03m;
+            decimal discount = 0;
+
+            if (DiscountAAACheckBox.Checked)
+            {
+                discount = thisAmount * 0.03m;
+            }
+            return discount;
         }
 
         decimal CalculateDinersCardDiscountOn(decimal thisAmount)
         {
-            return thisAmount * 0.05m;
+            decimal discount = 0;
+
+            if (DiscountDCCheckBox.Checked)
+            {
+                discount = thisAmount * 0.05m;
+            }
+            return discount;
         }
 
         /// <summary>
@@ -116,20 +128,22 @@ namespace Tip_TaxCalculator
             decimal originalAmount = 0;
             decimal totalDiscount = 0;
             decimal tax = 0;
+            decimal subTotal = 0;
             decimal tip = 0;
             decimal amountDue = 0;
             if (AllFieldsValid())
             {
                 originalAmount = decimal.Parse(DollarAmountTextBox.Text);
                 totalDiscount += CalculateAAADiscountOn(originalAmount);
-                totalDiscount = totalDiscount + CalculateDinersCardDiscountOn(originalAmount);
+                totalDiscount += CalculateDinersCardDiscountOn(originalAmount);
                 tax = CalculateTaxOn(originalAmount - totalDiscount);
-                tip = CalculateTipOn(originalAmount - totalDiscount + tax);
+                subTotal = (originalAmount - totalDiscount) + tax;
+                tip = CalculateTipOn(originalAmount - totalDiscount + tax, decimal.Parse(TipCustomTextBox.Text ));
                 amountDue = originalAmount - totalDiscount + tax + tip;
-                DisplayLabel.Text = $"Amount Given:{originalAmount:C}\n" + //:C transfers format of strings to be displayed as your computers
+                DisplayLabel.Text = $"Charged:     {originalAmount:C}\n" + //:C transfers format of strings to be displayed as your computers
                                     $"Discount:    {totalDiscount:C}\n" +      //default monetary system i.e. american dollars                                                                                        
                                     $"Sales Tax:   {tax:C}\n" +               //Could also be expressed as .ToString("C")
-                                    $"Subtotal:   \n" +
+                                    $"Subtotal:    {subTotal}\n" +
                                     $"Total Tip:   {tip:C}\n" +
                                     $"Amount Due:  {amountDue:C}";
             }
