@@ -111,20 +111,13 @@ namespace Tip_TaxCalculator
             return subTotal;
         }
 
-        //EventHandlers below--------------------------------------------------
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CalculateButton_Click(object sender, EventArgs e)
+        void DisplayTransaction()
         {
             decimal originalAmount = 0;
             decimal totalDiscount = 0;
             decimal tax = 0;
             decimal tip = 0;
             decimal amountDue = 0;
-            int padding = 15;
             if (AllFieldsValid())
             {
                 originalAmount = decimal.Parse(DollarAmountTextBox.Text);
@@ -133,13 +126,24 @@ namespace Tip_TaxCalculator
                 tax = CalculateTaxOn(originalAmount - totalDiscount);
                 tip = CalculateTipOn(originalAmount - totalDiscount + tax);
                 amountDue = originalAmount - totalDiscount + tax + tip;
-                DisplayLabel.Text = "Amount Given: ".PadRight(padding) +  $"{originalAmount.ToString("C")}\n" +
-                                    "Discount: ".PadRight(padding)        +  $"{totalDiscount.ToString("C")}\n" +
-                                    "Sales Tax: ".PadRight(padding)       +  $"{tax.ToString("C")}\n" +
-                                    "Subtotal: ".PadRight(padding)        +  $"   \n" +
-                                    "Total Tip: ".PadRight(padding)       +  $"{tip.ToString("C")}\n" +
-                                    "Amount Due: ".PadRight(padding)      +  $"{amountDue.ToString("C")}";
+                DisplayLabel.Text = $"Amount Given:{originalAmount:C}\n" + //:C transfers format of strings to be displayed as your computers
+                                    $"Discount:    {totalDiscount:C}\n" +      //default monetary system i.e. american dollars                                                                                        
+                                    $"Sales Tax:   {tax:C}\n" +               //Could also be expressed as .ToString("C")
+                                    $"Subtotal:   \n" +
+                                    $"Total Tip:   {tip:C}\n" +
+                                    $"Amount Due:  {amountDue:C}";
             }
+        }
+
+        //EventHandlers below--------------------------------------------------
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            DisplayTransaction();
         }
         
 
